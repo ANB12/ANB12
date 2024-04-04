@@ -1,0 +1,112 @@
+FROM node:20.5.1-bullseye-slim
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+COPY ["package.json", "./"]
+
+RUN npm install
+
+COPY . .
+
+CMD [ "node", "index.js" ]
+
+node_modules/
+.eula
+services:
+  - type: web
+    name: educational-template
+    env: docker
+    plan: free
+{
+  "name": "mathematics",
+  "version": "5.0.1",
+  "type": "module",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@titaniumnetwork-dev/ultraviolet": "^1.0.10",
+    "@tomphttp/bare-server-node": "^1.2.6",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.4"
+  }
+}
+import * as fsScandir from '@nodelib/fs.scandir';
+import type { Entry, Errno } from './types';
+export declare type FilterFunction<T> = (value: T) => boolean;
+export declare type DeepFilterFunction = FilterFunction<Entry>;
+export declare type EntryFilterFunction = FilterFunction<Entry>;
+export declare type ErrorFilterFunction = FilterFunction<Errno>;
+export interface Options {
+    basePath?: string;
+    concurrency?: number;
+    deepFilter?: DeepFilterFunction;
+    entryFilter?: EntryFilterFunction;
+    errorFilter?: ErrorFilterFunction;
+    followSymbolicLinks?: boolean;
+    fs?: Partial<fsScandir.FileSystemAdapter>;
+    pathSegmentSeparator?: string;
+    stats?: boolean;
+    throwErrorOnBrokenSymbolicLink?: boolean;
+}
+export 
+document.querySelector("form");
+const input = document.querySelector("input");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  window.navigator.serviceWorker
+    .register("./sw.js", {
+      scope: __uv$config.prefix,
+    })
+    .then(() => {
+      let url = input.value.trim();
+      if (!isUrl(url)) url = "https://www.google.com/search?q=" + url;
+      else if (!(url.startsWith("https://") || url.startsWith("http://")))
+        url = "http://" + url;
+      sessionStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
+      location.href = "go";
+    });
+});
+
+function isUrl(val = "") {
+  if (
+    /^http(s?):\/\//.test(val) ||
+    (val.includes(".") && val.substr(0, 1) !== " ")
+  )
+    return true;
+  return false;
+}
+function visit(value) {
+  let iframe = document.querySelector(".iframe.active");
+  window.navigator.serviceWorker
+    .register("./sw.js", {
+      scope: __uv$config.prefix,
+    })
+    .then(() => {
+      let url = value.trim();
+      if (!isUrl(url)) url = "https://www.google.com/search?q=" + url;
+      else if (!(url.startsWith("https://") || url.startsWith("http://")))
+        url = "https://" + url;
+      window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+}
+
+function isUrl(val = "") {
+  if (
+    /^http(s?):\/\//.test(val) ||
+    (val.includes(".") && val.substr(0, 1) !== " ")
+  )
+    return true;
+  return false;
+}
